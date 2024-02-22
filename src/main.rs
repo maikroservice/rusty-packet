@@ -12,8 +12,8 @@ struct Cli {
     username: String,
     password: String,
     domain: String,
-    //output_file_name: Option<String>,
     kdc_ip: String,
+    //output_file_name: Option<String>,
     // dc_fqdn: Option<String>,
 }
 /*
