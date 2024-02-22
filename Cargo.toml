@@ -6,3 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+ascii = "0.9.3"
+kerbeiros = "0.2.2"
+kerberos_ccache = "0.0.7"
