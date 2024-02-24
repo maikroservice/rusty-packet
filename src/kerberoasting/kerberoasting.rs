@@ -9,18 +9,16 @@ use std::net::*;
 use std::convert;
 use ascii::AsciiString;
 
-fn find_spn_accounts(username: &str) {
+fn find_spn_accounts(bind_dn: &str, password: &str, ) {
         //username: &str, password: &str, dc_ip: Option<String>, domain: Option<String>, use_ssl: bool) {
         let ldap_host = dc_ip.unwrap();
         let ldap_port: u16 = match use_ssl {
             true => 636,
-            false => 389,
             _ => 389,
         };
-        let ldap_pass = password;
         
 
-        ldapcon.simple_bind(&bind_dn, "Password123!").unwrap();
+        ldapcon.simple_bind(&bind_dn, password).unwrap();
         //"CN=maik ro,CN=Users,DC=snackempire,DC=home"
         let filter = "(&(objectClass=user)(servicePrincipalName=*)(!(objectCategory=computer))(!(cn=krbtgt)))";
         //let filter = format!("(&(objectClass=user)(displayName={}))", displayname);
