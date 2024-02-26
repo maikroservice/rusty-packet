@@ -1,7 +1,7 @@
 use clap::Parser;
 
 mod kerberoasting;
-use kerberoasting::kerberoast;
+use kerberoasting::kerberoasting::kerberoast;
 
 
 #[derive(Parser)]
@@ -14,6 +14,6 @@ struct Cli {
 fn main() {
     let args = Cli::parse();
     
-    kerberoast(args.username, args.password, args.domain, args.kdc_ip);
+    kerberoast(&args.username, &args.password, &args.domain, &args.kdc_ip);
     
 }

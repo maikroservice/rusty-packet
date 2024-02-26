@@ -10,4 +10,5 @@ ascii = "0.9.3"
 clap = { version = "4.5.1", features = ["derive"] }
 kerbeiros = "0.2.2"
 kerberos_ccache = "0.0.7"
+kerberos_constants = "0.0.9"
 ldap3 = "0.11.3"

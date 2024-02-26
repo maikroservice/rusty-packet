@@ -1223,6 +1223,7 @@ dependencies = [
  "clap",
  "kerbeiros",
  "kerberos_ccache",
+ "kerberos_constants",
  "ldap3",
 ]
 
