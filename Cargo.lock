@@ -559,25 +559,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "kerbeiros"
-version = "0.2.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2329d9ba4dbacaf78ee16f1d2779f1ee183c2280fb89802393e70097cd396062"
-dependencies = [
- "ascii 0.9.3",
- "chrono",
- "dns-lookup",
- "failure",
- "failure_derive",
- "getset",
- "kerberos_asn1 0.0.8",
- "kerberos_ccache",
- "kerberos_constants",
- "kerberos_crypto",
- "rand 0.6.5",
-]
-
-[[package]]
 name = "kerberos_asn1"
 version = "0.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -634,6 +615,23 @@ dependencies = [
  "num",
  "rand 0.6.5",
  "rust-crypto",
+]
+
+[[package]]
+name = "kerberust"
+version = "0.2.3"
+dependencies = [
+ "ascii 0.9.3",
+ "chrono",
+ "dns-lookup",
+ "failure",
+ "failure_derive",
+ "getset",
+ "kerberos_asn1 0.0.8",
+ "kerberos_ccache",
+ "kerberos_constants",
+ "kerberos_crypto",
+ "rand 0.6.5",
 ]
 
 [[package]]
@@ -1221,9 +1219,9 @@ version = "0.1.0"
 dependencies = [
  "ascii 0.9.3",
  "clap",
- "kerbeiros",
  "kerberos_ccache",
  "kerberos_constants",
+ "kerberust",
  "ldap3",
 ]
 

